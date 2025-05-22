@@ -185,7 +185,7 @@ bool Raytrace ( SRay ray, SSphere spheres[2], STriangle triangles[10], SMaterial
 			intersect.Normal = normalize ( intersect.Point - spheres[i].Center );
 			intersect.Color = vec3(1,1,1);
 			intersect.LightCoeffs = vec4(0.4,0.9,0,512);
-			intersect.ReflectionCoef = 0.88;
+			intersect.ReflectionCoef = 0.5;
 			intersect.RefractionCoef = 1;
 			intersect.MaterialType = MIRROR_REFLECTION;
 			result = true;
@@ -203,7 +203,7 @@ bool Raytrace ( SRay ray, SSphere spheres[2], STriangle triangles[10], SMaterial
 			normalize(cross(triangle.v1 - triangle.v2, triangle.v3 - triangle.v2));
 			intersect.Color = Colors[triangle.MaterialIdx];
 			intersect.LightCoeffs = vec4(0.4,0.9,0,512);
-			intersect.ReflectionCoef = 0.95;
+			intersect.ReflectionCoef = 0.1;
 			intersect.RefractionCoef = 1;
 			intersect.MaterialType = MIRROR_REFLECTION;
 			result = true;
@@ -295,8 +295,8 @@ void initializeDefaultScene(out STriangle triangles[10], out SSphere spheres[2])
 void initializeDefaultLightMaterials(out SLight light, out SMaterial materials[2])
 {
 	//** LIGHT **//
-	//light.Position = vec3(0.0, 2.0, -4.0f);
-    light.Position = camPos;
+	light.Position = vec3(0.0, 2.0, -4.0f);
+    //light.Position = camPos;
 	/** MATERIALS **/
 	vec4 lightCoefs = vec4(0.4,0.9,0.0,512.0);
 	materials[0].Color = vec3(0.0, 1.0, 0.0);
